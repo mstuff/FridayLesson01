@@ -27,14 +27,7 @@ public class MainPassword {
                 passwordNotValid = false;
             }
         }
-
-
-
     }
-
-
-
-
 
     public static boolean checkIfPasswordIsTooShort (int passwordLength, int minimumPasswordLength){
         if (passwordLength < minimumPasswordLength){
@@ -47,37 +40,6 @@ public class MainPassword {
             return false;
         } else return true;
     }
-
-
-    public static boolean trueWhenUppercaseIsContained(boolean containsUppercase){
-        //TODO
-        return true;
-    }
-
-    public static boolean trueWhenLowercaseIsContained(boolean containsLowercase) {
-        //TODO
-        return true;
-    }
-
-    public static boolean trueWhenNotOnBlacklist(boolean notOnBlacklist) {
-        //TODO
-        return true;
-    }
-
-    public static void printText (String textForPrinting){
-        System.out.println(textForPrinting);
-    }
-
-    public static String readUserInput(){
-        Scanner scan = new Scanner(System.in);
-        return scan.nextLine();
-    }
-
-    public static int getLength(String userInput){
-        return (userInput.length());
-    }
-
-
 
     public static boolean stringHasUppercase(String userInput){
         //TODO
@@ -94,14 +56,13 @@ public class MainPassword {
         return true;
     }
 
+    public static String readUserInput(){
+        Scanner scan = new Scanner(System.in);
+        return scan.nextLine();
+    }
 
-
-
-
-
-
-
-
-
+    public static int getLength(String userInput){
+        return (userInput.length());
+    }
 
 }
