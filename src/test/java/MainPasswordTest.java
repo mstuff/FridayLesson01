@@ -5,28 +5,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainPasswordTest {
 
     @Test
-    void clearWhenPasswordIsLongEnough_caseLonger(){
-        assertTrue(MainPassword.clearWhenPasswordIsLongEnough(7, 6));
+    void checkIfPasswordIsTooShort_caseTrue(){
+        assertTrue(MainPassword.checkIfPasswordIsTooShort(5, 6));
     }
 
     @Test
-    void clearWhenPasswordIsLongEnough_caseShorter(){
-        assertFalse(MainPassword.clearWhenPasswordIsLongEnough(5, 6));
+    void checkIfPasswordIsTooShort_caseFalse(){
+        assertFalse(MainPassword.checkIfPasswordIsTooShort(7, 6));
     }
 
     @Test
-    void clearWhenPasswordIsLongEnough_caseEqual(){
-        assertFalse(MainPassword.clearWhenPasswordIsLongEnough(6, 6));
-    }
-
-    @Test
-    void clearWhenNumberIsContained_caseTrue(){
-        assertTrue(MainPassword.clearWhenNumberIsContained(true));
-    }
-
-    @Test
-    void clearWhenNumberIsContained_caseFalse(){
-        assertFalse(MainPassword.clearWhenNumberIsContained(false));
+    void checkIfPasswordIsTooShort_caseEqual(){
+        assertFalse(MainPassword.checkIfPasswordIsTooShort(6, 6));
     }
 
 
@@ -41,13 +31,13 @@ class MainPasswordTest {
     }
 
     @Test
-    void stringHasNumber_shouldTrue(){
-        assertTrue(MainPassword.stringHasNumber("ser4"));
+    void checkIfNumberIsMissing_shouldTrue(){
+        assertFalse(MainPassword.checkIfNumberIsMissing("ser4"));
     }
 
     @Test
-    void stringHasNumber_shouldFalse(){
-        assertFalse(MainPassword.stringHasNumber("ser"));
+    void checkIfNumberIsMissing_shouldFalse(){
+        assertTrue(MainPassword.checkIfNumberIsMissing("ser"));
     }
 
 
