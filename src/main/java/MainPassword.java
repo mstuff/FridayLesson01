@@ -21,14 +21,23 @@ public class MainPassword {
 
             boolean passwordIsTooShort = checkIfPasswordIsTooShort(actualPasswordLength, allowedPasswordLength);
             boolean numberIsMissing = checkIfNumberIsMissing(userInputPassword);
+            boolean uppercaseIsMissing = checkIfUppercaseIsMissing(userInputPassword);
+            boolean lowercaseIsMissing = checkIfLowercaseIsMissing(userInputPassword);
 
             if (passwordIsTooShort) {
                 System.out.println("Your password should have a length of" +
                         " at least " + allowedPasswordLength + " characters.");
                 passwordNotValid = continueWhenUserEntersY(userPromptToContinue);
             } else if (numberIsMissing) {
-                System.out.println("Your password should contain one numeral.");
+                System.out.println("Your password should contain at least one numeral.");
                 passwordNotValid =continueWhenUserEntersY(userPromptToContinue);
+            } else if (uppercaseIsMissing) {
+                System.out.println("Your password should contain at least one uppercase letter.");
+                passwordNotValid =continueWhenUserEntersY(userPromptToContinue);
+            } else if (lowercaseIsMissing) {
+                System.out.println("Your password should contain at least one lowercase letter.");
+                passwordNotValid =continueWhenUserEntersY(userPromptToContinue);
+
             } else {
                 System.out.println("The password is valid.");
                 passwordIsSet = true;
@@ -56,19 +65,24 @@ public class MainPassword {
     }
 
     public static boolean checkIfNumberIsMissing(String userInput){
-        if (userInput.matches(".*\\d.*")) {
+        if (userInput.matches(".*[0-9].*")) {
             return false;
         } else return true;
     }
 
-    public static boolean stringHasUppercase(String userInput){
-        //TODO
-        return true;
+
+    public static boolean checkIfUppercaseIsMissing(String userInput){
+        if (userInput.matches(".*[A-Z].*")) {
+            return false;
+        } else return true;
     }
 
-    public static boolean stringHasLowercase(String userInput){
-        //TODO
-        return true;
+
+
+    public static boolean checkIfLowercaseIsMissing(String userInput){
+        if (userInput.matches(".*[a-z].*")) {
+            return false;
+        } else return true;
     }
 
     public static boolean isOnBlacklist(String userInput){

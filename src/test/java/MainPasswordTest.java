@@ -48,14 +48,51 @@ class MainPasswordTest {
 
 
     @Test
-    void checkIfNumberIsMissing_shouldTrue(){
+    void checkIfNumberIsMissing_whenOneNumberIsContained_shouldFalse(){
         assertFalse(MainPassword.checkIfNumberIsMissing("ser4"));
     }
 
     @Test
-    void checkIfNumberIsMissing_shouldFalse(){
+    void checkIfNumberIsMissing_whenSeveralNumbersAreContained_shouldFalse(){
+        assertFalse(MainPassword.checkIfNumberIsMissing("ser444"));
+    }
+
+    @Test
+    void checkIfNumberIsMissing_shouldTrue(){
         assertTrue(MainPassword.checkIfNumberIsMissing("ser"));
     }
+
+    @Test
+    void checkIfUppercaseIsMissing_whenOneUppercaseContained_shouldFalse(){
+        assertFalse(MainPassword.checkIfUppercaseIsMissing("eSr"));
+    }
+
+    @Test
+    void checkIfUppercaseIsMissing_whenSeveralUppercaseContained_shouldFalse(){
+        assertFalse(MainPassword.checkIfUppercaseIsMissing("SeSEr"));
+    }
+
+    @Test
+    void checkIfUppercaseIsMissing_shouldTrue(){
+        assertTrue(MainPassword.checkIfUppercaseIsMissing("ser"));
+    }
+
+    @Test
+    void checkIfLowercaseIsMissing_whenOneLowercaseContained_shouldFalse(){
+        assertFalse(MainPassword.checkIfLowercaseIsMissing("ESr"));
+    }
+
+    @Test
+    void checkIfLowercaseIsMissing_whenSeveralLowercaseContained_shouldFalse(){
+        assertFalse(MainPassword.checkIfLowercaseIsMissing("SeSEr"));
+    }
+
+    @Test
+    void checkIfLowercaseIsMissing_shouldTrue(){
+        assertTrue(MainPassword.checkIfLowercaseIsMissing("DER"));
+    }
+
+
 
 
 }
