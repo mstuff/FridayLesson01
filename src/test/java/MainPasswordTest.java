@@ -4,6 +4,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MainPasswordTest {
 
+    /*
+    @Test
+    void continueWhenUserEntersY_whenY_shouldTrue() {
+        assertTrue(MainPassword.continueWhenUserEntersY("y"));
+    }
+
+    @Test
+    void continueWhenUserEntersY_whenOtherThanY_shouldFalse() {
+        assertFalse(MainPassword.continueWhenUserEntersY(" "));
+    }
+    */
+
+
+
     @Test
     void checkIfPasswordIsTooShort_caseTrue(){
         assertTrue(MainPassword.checkIfPasswordIsTooShort(5, 6));
@@ -20,6 +34,7 @@ class MainPasswordTest {
     }
 
 
+
     @Test
     void getLength_length5() {
         assertEquals(5, MainPassword.getLength("ddddd"));
@@ -29,6 +44,8 @@ class MainPasswordTest {
     void getLength_whenNoInput_should0() {
         assertEquals(0, MainPassword.getLength(""));
     }
+
+
 
     @Test
     void checkIfNumberIsMissing_shouldTrue(){

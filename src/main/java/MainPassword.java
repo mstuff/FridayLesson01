@@ -2,14 +2,19 @@ import java.util.Scanner;
 
 public class MainPassword {
     public static void main(String[] args) {
+        boolean validPassword = setPassword();
+        System.out.println("was able to set a valid password: " + validPassword);
+    }
 
+    public static boolean setPassword(){
+        boolean passwordIsSet = false;
         boolean passwordNotValid = true;
 
         while (passwordNotValid) {
 
-            String userPromptPassword = "gib ein neues Passwort ein";
-            System.out.println(userPromptPassword);
-            String userInputPassword = readUserInput();
+            String userPromptPassword = "Please enter a new password: ";
+            String userPromptToContinue = "Want to try again? [y / n]";
+            String userInputPassword = returnStringFromUserPrompt(userPromptPassword);
 
             int actualPasswordLength = getLength(userInputPassword);
             int allowedPasswordLength = 6;
@@ -17,15 +22,30 @@ public class MainPassword {
             boolean passwordIsTooShort = checkIfPasswordIsTooShort(actualPasswordLength, allowedPasswordLength);
             boolean numberIsMissing = checkIfNumberIsMissing(userInputPassword);
 
-
             if (passwordIsTooShort) {
-                System.out.println("Das Passwort sollte mindestens " + allowedPasswordLength + " Zeichen lang sein.");
+                System.out.println("Your password should have a length of" +
+                        " at least " + allowedPasswordLength + " characters.");
+                passwordNotValid = continueWhenUserEntersY(userPromptToContinue);
             } else if (numberIsMissing) {
-                System.out.println("Das Passwort sollte mindestens eine Ziffer enthalten.");
+                System.out.println("Your password should contain one numeral.");
+                passwordNotValid =continueWhenUserEntersY(userPromptToContinue);
             } else {
-                System.out.println("Das Passwort ist gültig.");
+                System.out.println("The password is valid.");
+                passwordIsSet = true;
                 passwordNotValid = false;
             }
+        }
+        return passwordIsSet;
+
+    }
+
+    public static boolean continueWhenUserEntersY(String userPrompt){
+        String userInput = returnStringFromUserPrompt(userPrompt);
+        if (userInput.equals("y")){
+            return true;
+        } else {
+            System.out.println("could not set a valid password!");
+            return false;
         }
     }
 
@@ -59,6 +79,11 @@ public class MainPassword {
     public static String readUserInput(){
         Scanner scan = new Scanner(System.in);
         return scan.nextLine();
+    }
+
+    public static String returnStringFromUserPrompt(String userPrompt){
+        System.out.println(userPrompt);
+        return readUserInput();
     }
 
     public static int getLength(String userInput){
