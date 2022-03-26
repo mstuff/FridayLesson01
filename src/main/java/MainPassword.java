@@ -70,14 +70,11 @@ public class MainPassword {
         } else return true;
     }
 
-
     public static boolean checkIfUppercaseIsMissing(String userInput){
         if (userInput.matches(".*[A-Z].*")) {
             return false;
         } else return true;
     }
-
-
 
     public static boolean checkIfLowercaseIsMissing(String userInput){
         if (userInput.matches(".*[a-z].*")) {
